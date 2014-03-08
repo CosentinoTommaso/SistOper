@@ -9,7 +9,6 @@ import java.util.logging.Logger;
  */
 public class MyThread implements Runnable{
     String nome;
-    Coda coda;
     int priorita, tempo, TS = 20;
     MyThread(String nome, int priorita, int tempo){
         this.nome = nome;
@@ -21,7 +20,13 @@ public class MyThread implements Runnable{
     @Override
     public void run(){
         tempo = tempo - TS;
-        System.out.println(nome + " priorita: " + priorita + " tempo: " + tempo);
+        if(tempo<0){
+            tempo = 0;
+            System.out.println(nome + " priorita: " + priorita + " tempo: " + tempo);
+        }else{
+            System.out.println(nome + " priorita: " + priorita + " tempo: " + tempo);
+        }
+
         /*try {
             this.wait();
         } catch (InterruptedException ex) {
